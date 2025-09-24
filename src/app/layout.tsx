@@ -7,6 +7,7 @@ import {
   SignedIn,
   SignedOut,
 } from "@clerk/nextjs";
+import "@stream-io/video-react-sdk/dist/css/styles.css";
 import ConvexClerkProvider from "@/components/providers/ConvexClerkProvider";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
