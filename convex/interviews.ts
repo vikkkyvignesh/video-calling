@@ -19,7 +19,9 @@ export const getMyInterviews = query({
 
     const interviews = await ctx.db
       .query("interviews")
-      .withIndex("by_candidateId", (q) => q.eq("candidateId", identity.subject))
+      .withIndex("by_candidate_id", (q) =>
+        q.eq("candidateId", identity.subject)
+      )
       .collect();
 
     return interviews!;
@@ -31,7 +33,7 @@ export const getInterviewByStreamCallId = query({
   handler: async (ctx, args) => {
     return await ctx.db
       .query("interviews")
-      .withIndex("by_streamCallId", (q) =>
+      .withIndex("by_stream_call_id", (q) =>
         q.eq("streamCallId", args.streamCallId)
       )
       .first();

@@ -8,7 +8,7 @@ export default defineSchema({
     image: v.optional(v.string()),
     role: v.union(v.literal("candidate"), v.literal("interviewer")), // "candidate" or "interviewer"
     clerkId: v.string(), // Clerk user ID
-  }).index("by_clerkId", ["clerkId"]),
+  }).index("by_clerk_id", ["clerkId"]),
 
   interviews: defineTable({
     title: v.string(),
@@ -20,13 +20,14 @@ export default defineSchema({
     candidateId: v.string(),
     interviewerIds: v.array(v.string()),
   })
-    .index("by_candidateId", ["candidateId"])
-    .index("by_streamCallId", ["streamCallId"]),
+    .index("by_candidate_id", ["candidateId"])
+    .index("by_stream_call_id", ["streamCallId"]),
 
   comments: defineTable({
     content: v.string(),
     rating: v.number(),
     interviewerId: v.string(),
     interviewId: v.id("interviews"),
-  }).index("by_interviewId", ["interviewId"]),
+  }).index("by_interview_id", ["interviewId"]),
 });
+//https://handy-jaguar-58.clerk.accounts.dev
